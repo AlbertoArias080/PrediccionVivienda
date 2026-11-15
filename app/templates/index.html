@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estimador de precio de apartamentos · Bogotá</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}" />
+</head>
+<body>
+  <header class="cabecera">
+    <div>
+      <h1>Estimador de precio de apartamentos</h1>
+      <p>Bogotá · modelo de regresión entrenado con anuncios de Habi y Metrocuadrado</p>
+    </div>
+    <div class="cabecera-modelo" id="info-modelo"></div>
+  </header>
+
+  <main class="contenido">
+    <!-- Columna izquierda: formulario -->
+    <section class="panel" aria-label="Datos del inmueble">
+      <form id="formulario" novalidate>
+        <h2><span class="paso">1</span> Ubicación</h2>
+        <label for="direccion">Dirección del inmueble</label>
+        <div class="fila-direccion">
+          <input id="direccion" type="text" placeholder="Ej.: Calle 94 # 18 - 65" autocomplete="off" />
+          <button type="button" id="btn-ubicar" class="secundario">Ubicar</button>
+        </div>
+        <p class="ayuda" id="estado-ubicacion">Escriba la dirección y pulse “Ubicar”, o haga clic en el mapa. Puede arrastrar el marcador para corregir el punto.</p>
+
+        <h2><span class="paso">2</span> Características del inmueble</h2>
+        <div class="rejilla" id="campos-numericos"></div>
+        <div class="rejilla" id="campos-categoria"></div>
+
+        <h2><span class="paso">3</span> Comodidades</h2>
+        <div class="comodidades" id="campos-binarios"></div>
+
+        <button type="submit" id="btn-calcular" class="primario">Calcular precio</button>
+        <p class="error" id="mensaje-error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <!-- Columna derecha: resultado y mapa -->
+    <section class="columna-mapa">
+      <div class="resultado" id="resultado" hidden>
+        <div class="precio-bloque">
+          <span class="etiqueta">Precio estimado</span>
+          <span class="precio" id="res-precio"></span>
+          <span class="rango" id="res-rango"></span>
+        </div>
+        <div class="indicadores">
+          <div><span class="etiqueta">Precio por m²</span><strong id="res-m2"></strong></div>
+          <div><span class="etiqueta">Localidad</span><strong id="res-localidad"></strong></div>
+          <div><span class="etiqueta">Error típico del modelo</span><strong id="res-error"></strong></div>
+        </div>
+        <ul class="advertencias" id="res-advertencias"></ul>
+      </div>
+
+      <div class="mapa-contenedor">
+        <div id="mapa"></div>
+        <div class="control-radio" id="control-radio" hidden>
+          <label for="radio">Radio de análisis: <strong id="radio-valor">500</strong> m</label>
+          <input id="radio" type="range" min="200" max="500" step="50" value="500" />
+        </div>
+      </div>
+
+      <div class="entorno" id="entorno" hidden>
+        <div class="tarjeta">
+          <h3>Distancias</h3>
+          <table id="tabla-distancias"></table>
+          <p class="nota">La distancia en línea recta (Haversine) es la que usa el modelo. La ruta caminando es solo informativa.</p>
+        </div>
+        <div class="tarjeta">
+          <h3>Amenidades dentro del radio</h3>
+          <div id="lista-amenidades"></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Variables calculadas con la ubicación</h3>
+          <table id="tabla-variables"></table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    Estimación sobre precios de oferta; no reemplaza un avalúo. Mapa y rutas © OpenStreetMap.
+    Taller de Regresión y Regularización · Grupo B · Fundación Universitaria Konrad Lorenz.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

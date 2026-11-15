@@ -1,0 +1,188 @@
+:root {
+  --morado: #5b1a6b;
+  --morado-claro: #f4eef6;
+  --magenta: #d81b60;
+  --verde: #2e7d5b;
+  --texto: #1f2430;
+  --gris: #667085;
+  --borde: #dfe3ea;
+  --fondo: #f6f7f9;
+  --blanco: #ffffff;
+  --radio: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+  line-height: 1.45;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+  background: var(--morado);
+  color: var(--blanco);
+  padding: 18px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cabecera h1 { margin: 0; font-size: 1.35rem; }
+.cabecera p { margin: 2px 0 0; opacity: .85; font-size: .9rem; }
+.cabecera-modelo { font-size: .8rem; opacity: .9; text-align: right; }
+
+/* ---------- Distribución ---------- */
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(340px, 430px) 1fr;
+  gap: 20px;
+  padding: 20px 28px;
+  align-items: start;
+}
+.panel, .tarjeta, .resultado {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+}
+.panel { padding: 18px 20px 22px; }
+.columna-mapa { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* ---------- Formulario ---------- */
+h2 {
+  font-size: 1rem;
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+h2:first-child { margin-top: 0; }
+.paso {
+  background: var(--morado);
+  color: var(--blanco);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: .8rem;
+}
+label { font-size: .82rem; color: var(--gris); display: block; margin-bottom: 4px; }
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: .95rem;
+  font-family: inherit;
+  background: var(--blanco);
+  color: var(--texto);
+}
+input:focus, select:focus { outline: 2px solid var(--morado); outline-offset: 1px; }
+.fila-direccion { display: flex; gap: 8px; }
+.rejilla { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; margin-bottom: 10px; }
+.ayuda { font-size: .8rem; color: var(--gris); margin: 6px 0 0; }
+.ayuda.ok { color: var(--verde); }
+.comodidades { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+.comodidades label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .9rem; color: var(--texto); margin: 0; cursor: pointer;
+}
+.comodidades input { width: 16px; height: 16px; accent-color: var(--morado); }
+
+button {
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+button.primario {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  font-size: 1rem;
+  background: var(--magenta);
+  color: var(--blanco);
+}
+button.primario:hover { filter: brightness(.93); }
+button.secundario {
+  padding: 0 16px;
+  background: var(--morado-claro);
+  color: var(--morado);
+  border-color: #d9c7df;
+}
+button:disabled { opacity: .6; cursor: wait; }
+.error { color: #b42318; font-size: .88rem; margin: 10px 0 0; }
+
+/* ---------- Resultado ---------- */
+.resultado {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 28px;
+  align-items: center;
+  border-left: 5px solid var(--magenta);
+}
+.etiqueta { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--gris); }
+.precio { display: block; font-size: 2rem; font-weight: 700; color: var(--morado); line-height: 1.15; }
+.rango { font-size: .88rem; color: var(--gris); }
+.indicadores { display: flex; gap: 26px; flex-wrap: wrap; }
+.indicadores strong { font-size: 1.05rem; }
+.advertencias { grid-column: 1 / -1; margin: 4px 0 0; padding-left: 18px; font-size: .84rem; color: #8a5a00; }
+.advertencias:empty { display: none; }
+
+/* ---------- Mapa ---------- */
+.mapa-contenedor { position: relative; }
+#mapa {
+  height: 520px;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  z-index: 0;
+}
+.control-radio {
+  position: absolute; top: 12px; right: 12px; z-index: 500;
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+}
+.control-radio label { color: var(--texto); margin-bottom: 2px; }
+.control-radio input { width: 170px; accent-color: var(--morado); }
+.punto {
+  display: flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  color: #fff; font-size: 10px; font-weight: 700;
+  border: 2px solid #fff; box-shadow: 0 0 3px rgba(0,0,0,.45);
+}
+.marcador-casa {
+  width: 22px; height: 22px; border-radius: 50% 50% 50% 0;
+  background: var(--magenta); border: 3px solid #fff;
+  transform: rotate(-45deg); box-shadow: 0 1px 5px rgba(0,0,0,.5);
+}
+
+/* ---------- Entorno ---------- */
+.entorno { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.tarjeta { padding: 14px 16px; }
+.tarjeta h3 { margin: 0 0 8px; font-size: .95rem; color: var(--morado); }
+table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+td { padding: 5px 0; border-bottom: 1px solid #eef0f4; vertical-align: top; }
+td:last-child { text-align: right; font-weight: 600; white-space: nowrap; padding-left: 10px; }
+td small { color: var(--gris); font-weight: 400; display: block; }
+.nota { font-size: .76rem; color: var(--gris); margin: 8px 0 0; }
+.amenidad { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: .88rem; cursor: pointer; }
+.amenidad input { accent-color: var(--morado); }
+.amenidad .color { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.amenidad .conteo { margin-left: auto; font-weight: 700; }
+
+.pie { padding: 14px 28px 24px; font-size: .78rem; color: var(--gris); }
+
+@media (max-width: 900px) {
+  .contenido { grid-template-columns: 1fr; padding: 14px; }
+  .resultado { grid-template-columns: 1fr; }
+  #mapa { height: 400px; }
+  .cabecera-modelo { text-align: left; }
+}

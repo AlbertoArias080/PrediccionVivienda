@@ -1,0 +1,10 @@
+# Librerías de la aplicación web (producción en Render).
+# Las versiones de scikit-learn, numpy y pandas deben coincidir con las usadas al
+# entrenar (ver modelado/output/metadata.json) para poder cargar el modelo serializado.
+Flask==3.1.1
+gunicorn==23.0.0
+joblib==1.6.0
+numpy==2.4.4
+pandas==3.0.2
+requests==2.33.1
+scikit-learn==1.9.1
