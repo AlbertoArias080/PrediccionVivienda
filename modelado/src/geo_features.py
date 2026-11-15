@@ -1,13 +1,4 @@
-"""Variables geográficas de una vivienda (distancias Haversine y conteos por radio).
 
-Este módulo es la ÚNICA implementación de las variables de ubicación del proyecto:
-lo usa el notebook de modelado (para calcularlas sobre la base de entrenamiento),
-el notebook de producción y la aplicación web (para un apartamento nuevo).
-Así se garantiza que un inmueble nuevo recibe exactamente la misma transformación
-que los datos con los que se entrenó el modelo.
-
-Todas las distancias son Haversine (línea recta sobre la esfera), en metros.
-"""
 from __future__ import annotations
 
 import json
