@@ -1,10 +1,10 @@
 {
   "modelo": "Forward (BIC)",
   "descripcion": "Regresión lineal múltiple sobre log(precio_venta) con las variables elegidas por selección hacia adelante/atrás (criterio BIC, variables categóricas en bloque). El Pipeline devuelve pesos.",
-  "fecha_entrenamiento": "2026-11-14",
+  "fecha_entrenamiento": "2026-11-15",
   "semilla": 42,
-  "n_train": 8136,
-  "n_test": 2034,
+  "n_train": 8179,
+  "n_test": 2045,
   "variables_candidatas": [
     "area_m2",
     "administracion",
@@ -34,26 +34,17 @@
     "religion_500m",
     "factores_negativos_500m",
     "vias_principales_500m",
-    "tiene_ascensor",
-    "parqueadero_cubierto",
-    "tiene_deposito",
-    "tiene_balcon",
-    "tiene_terraza",
-    "tiene_chimenea",
-    "tiene_estudio",
-    "tiene_cuarto_servicio",
     "tiene_jacuzzi",
     "tiene_tina",
-    "tiene_vigilancia",
-    "conjunto_cerrado",
-    "tiene_piscina",
+    "parqueadero_cubierto",
+    "tiene_ascensor",
     "tiene_gimnasio",
-    "tiene_salon_comunal",
-    "tiene_bbq",
-    "tiene_zona_infantil",
-    "tiene_zonas_verdes",
-    "tiene_sauna_turco",
-    "tiene_canchas",
+    "tiene_piscina",
+    "conjunto_cerrado",
+    "tiene_vigilancia",
+    "tiene_chimenea",
+    "tiene_balcon_terraza",
+    "tiene_deposito",
     "antiguedad_rango",
     "localidad",
     "tipo_via_principal_cercana"
@@ -62,8 +53,8 @@
     "area_m2",
     "administracion",
     "dist_estacion_m",
-    "dist_parque_m",
     "dist_hospitales_clinicas_m",
+    "dist_factores_negativos_m",
     "dist_via_principal_m",
     "habitaciones",
     "banos",
@@ -72,17 +63,10 @@
     "latitud",
     "longitud",
     "farmacias_500m",
-    "educacion_500m",
     "parqueadero_cubierto",
-    "tiene_deposito",
-    "tiene_terraza",
-    "tiene_estudio",
-    "tiene_cuarto_servicio",
-    "tiene_tina",
-    "tiene_piscina",
     "tiene_gimnasio",
-    "tiene_bbq",
-    "tiene_zona_infantil",
+    "tiene_piscina",
+    "tiene_balcon_terraza",
     "antiguedad_rango",
     "localidad"
   ],
@@ -92,7 +76,7 @@
       "etiqueta": "Área (m²)",
       "tipo": "numero",
       "minimo": 15.0,
-      "maximo": 600.0,
+      "maximo": 800.0,
       "mediana": 110.0,
       "entero": false,
       "opcional": false
@@ -102,8 +86,8 @@
       "etiqueta": "Administración mensual ($)",
       "tipo": "numero",
       "minimo": 30000.0,
-      "maximo": 7000000.0,
-      "mediana": 890000.0,
+      "maximo": 7500000.0,
+      "mediana": 887700.0,
       "entero": false,
       "opcional": true
     },
@@ -153,28 +137,8 @@
       "tipo": "binaria"
     },
     {
-      "nombre": "tiene_deposito",
-      "etiqueta": "Depósito",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_terraza",
-      "etiqueta": "Terraza",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_estudio",
-      "etiqueta": "Estudio o biblioteca",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_cuarto_servicio",
-      "etiqueta": "Cuarto de servicio",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_tina",
-      "etiqueta": "Tina",
+      "nombre": "tiene_gimnasio",
+      "etiqueta": "Gimnasio",
       "tipo": "binaria"
     },
     {
@@ -183,18 +147,8 @@
       "tipo": "binaria"
     },
     {
-      "nombre": "tiene_gimnasio",
-      "etiqueta": "Gimnasio",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_bbq",
-      "etiqueta": "Zona BBQ",
-      "tipo": "binaria"
-    },
-    {
-      "nombre": "tiene_zona_infantil",
-      "etiqueta": "Zona infantil",
+      "nombre": "tiene_balcon_terraza",
+      "etiqueta": "Balcón o terraza",
       "tipo": "binaria"
     },
     {
@@ -239,29 +193,28 @@
   ],
   "variables_calculadas_con_la_direccion": [
     "dist_estacion_m",
-    "dist_parque_m",
     "dist_hospitales_clinicas_m",
+    "dist_factores_negativos_m",
     "dist_via_principal_m",
     "latitud",
     "longitud",
-    "farmacias_500m",
-    "educacion_500m"
+    "farmacias_500m"
   ],
   "metricas_test": {
-    "MAE": 211750121.31170216,
-    "RMSE": 425111382.11386657,
-    "R2": 0.8773278805896018,
-    "MAPE": 15.976250335946288
+    "MAE": 240075032.72801885,
+    "RMSE": 508226248.0307407,
+    "R2": 0.861172678476033,
+    "MAPE": 15.977965448970387
   },
   "banda_80": {
-    "factor_inferior": 0.772951891785601,
-    "factor_superior": 1.2921589476024244
+    "factor_inferior": 0.772689739399146,
+    "factor_superior": 1.2895659362944891
   },
   "versiones": {
-    "python": "3.13.3",
+    "python": "3.12.10",
     "scikit-learn": "1.9.1",
-    "pandas": "3.0.2",
-    "numpy": "2.4.4",
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
     "joblib": "1.6.0"
   }
 }

@@ -14,7 +14,7 @@ El proyecto tiene dos partes que comparten el mismo código de transformación:
 prediccion-vivienda-bogota/
 ├── modelado/
 │   ├── input/                          datos de entrada
-│   │   ├── casas_con_variables_osm.csv     base Habi + Metrocuadrado (Taller de EDA)
+│   │   ├── base_depurada.csv               base depurada Habi + Metrocuadrado (salida del Taller de EDA)
 │   │   ├── estaciones_transmilenio.geojson
 │   │   ├── parques_bogota.geojson
 │   │   ├── capas_osm_puntos.json           equipamientos (salud, educación, comercio…)
@@ -30,6 +30,7 @@ prediccion-vivienda-bogota/
 │   ├── src/                            código compartido con la app
 │   │   ├── preparacion.py                  limpieza, armonización y `construir_registro`
 │   │   └── geo_features.py                 distancias Haversine y conteos por radio
+│   ├── respaldo_base_anterior/         notebook 01 y artefactos del modelo entrenado con la base anterior
 │   ├── 01_modelado_regresion.ipynb     notebook del taller (modelado y evaluación)
 │   ├── 02_produccion.ipynb             notebook de puesta en producción (no reentrena)
 │   └── requirements.txt                librerías para los notebooks
@@ -54,18 +55,18 @@ prediccion-vivienda-bogota/
 
 | Modelo | Variables | MAE prueba | RMSE prueba | R² prueba |
 |---|---|---|---|---|
-| Base (OLS) | 51 | $210,4 M | $425,0 M | 0,877 |
-| **Forward (BIC) — modelo final** | **26** | **$211,8 M** | **$425,1 M** | **0,877** |
-| Backward (BIC) | 26 | $211,8 M | $425,1 M | 0,877 |
-| Ridge | 51 | $212,4 M | $434,2 M | 0,872 |
-| Lasso | 36 | $214,1 M | $434,9 M | 0,872 |
+| Base (OLS) | 42 | $241,0 M | $512,1 M | 0,859 |
+| **Forward (BIC) — modelo final** | **19** | **$240,1 M** | **$508,2 M** | **0,861** |
+| Backward (BIC) | 19 | $240,0 M | $508,5 M | 0,861 |
+| Ridge | 42 | $247,4 M | $536,4 M | 0,845 |
+| Lasso | 26 | $247,2 M | $534,5 M | 0,846 |
 
-Los cinco modelos predicen prácticamente igual; se eligió el de selección Forward/Backward (coinciden al 100 %) por usar la mitad de las variables. La justificación completa está en el notebook `01_modelado_regresion.ipynb`.
+Los modelos se entrenan con la base depurada del Taller de EDA (10.224 apartamentos; 8.179 de entrenamiento y 2.045 de prueba, con la misma división del EDA). Los cinco predicen prácticamente igual; se eligió el de selección Forward (coincide con Backward en 18 de sus 19 variables) por usar menos de la mitad de las variables. La justificación completa está en el notebook `01_modelado_regresion.ipynb`.
 
-**Variables del modelo final (26):**
+**Variables del modelo final (19):**
 
-- *Las digita el usuario (18):* área, administración, habitaciones, baños, parqueaderos, estrato, antigüedad, localidad y 10 comodidades (parqueadero cubierto, depósito, terraza, estudio, cuarto de servicio, tina, piscina, gimnasio, BBQ, zona infantil).
-- *Se calculan con la dirección (8):* latitud, longitud, distancia a TransMilenio, a parque, a hospital/clínica y a vía principal, farmacias y colegios a 500 m.
+- *Las digita el usuario (12):* área, administración, habitaciones, baños, parqueaderos, estrato, antigüedad, localidad y 4 comodidades (parqueadero cubierto, gimnasio, piscina, balcón o terraza).
+- *Se calculan con la dirección (7):* latitud, longitud, distancia a TransMilenio, a hospital/clínica, a vía principal y a factores negativos, y farmacias a 500 m.
 
 El formulario de la app se construye a partir de `output/metadata.json`, de modo que siempre pide exactamente las variables con las que se entrenó el modelo.
 

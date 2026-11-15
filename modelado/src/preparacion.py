@@ -42,6 +42,7 @@ COMODIDADES = {
     "tiene_deposito": ("Depósito", r"deposito|cuarto util"),
     "tiene_balcon": ("Balcón", r"balcon"),
     "tiene_terraza": ("Terraza", r"terraza"),
+    "tiene_balcon_terraza": ("Balcón o terraza", r"balcon|terraza"),   # comodidad combinada de la base depurada del EDA
     "tiene_chimenea": ("Chimenea", r"chimenea"),
     "tiene_estudio": ("Estudio o biblioteca", r"\bestudio\b|biblioteca"),
     "tiene_cuarto_servicio": ("Cuarto de servicio", r"(?:cuarto|alcoba|habitacion|bano) del? servicio"),

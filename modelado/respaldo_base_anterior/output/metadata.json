@@ -1,0 +1,267 @@
+{
+  "modelo": "Forward (BIC)",
+  "descripcion": "Regresión lineal múltiple sobre log(precio_venta) con las variables elegidas por selección hacia adelante/atrás (criterio BIC, variables categóricas en bloque). El Pipeline devuelve pesos.",
+  "fecha_entrenamiento": "2026-11-14",
+  "semilla": 42,
+  "n_train": 8136,
+  "n_test": 2034,
+  "variables_candidatas": [
+    "area_m2",
+    "administracion",
+    "dist_estacion_m",
+    "dist_parque_m",
+    "dist_hospitales_clinicas_m",
+    "dist_farmacias_m",
+    "dist_educacion_m",
+    "dist_comercio_m",
+    "dist_transporte_m",
+    "dist_recreacion_m",
+    "dist_religion_m",
+    "dist_factores_negativos_m",
+    "dist_via_principal_m",
+    "habitaciones",
+    "banos",
+    "parqueaderos",
+    "estrato",
+    "latitud",
+    "longitud",
+    "hospitales_clinicas_500m",
+    "farmacias_500m",
+    "educacion_500m",
+    "comercio_500m",
+    "transporte_500m",
+    "recreacion_500m",
+    "religion_500m",
+    "factores_negativos_500m",
+    "vias_principales_500m",
+    "tiene_ascensor",
+    "parqueadero_cubierto",
+    "tiene_deposito",
+    "tiene_balcon",
+    "tiene_terraza",
+    "tiene_chimenea",
+    "tiene_estudio",
+    "tiene_cuarto_servicio",
+    "tiene_jacuzzi",
+    "tiene_tina",
+    "tiene_vigilancia",
+    "conjunto_cerrado",
+    "tiene_piscina",
+    "tiene_gimnasio",
+    "tiene_salon_comunal",
+    "tiene_bbq",
+    "tiene_zona_infantil",
+    "tiene_zonas_verdes",
+    "tiene_sauna_turco",
+    "tiene_canchas",
+    "antiguedad_rango",
+    "localidad",
+    "tipo_via_principal_cercana"
+  ],
+  "variables_modelo": [
+    "area_m2",
+    "administracion",
+    "dist_estacion_m",
+    "dist_parque_m",
+    "dist_hospitales_clinicas_m",
+    "dist_via_principal_m",
+    "habitaciones",
+    "banos",
+    "parqueaderos",
+    "estrato",
+    "latitud",
+    "longitud",
+    "farmacias_500m",
+    "educacion_500m",
+    "parqueadero_cubierto",
+    "tiene_deposito",
+    "tiene_terraza",
+    "tiene_estudio",
+    "tiene_cuarto_servicio",
+    "tiene_tina",
+    "tiene_piscina",
+    "tiene_gimnasio",
+    "tiene_bbq",
+    "tiene_zona_infantil",
+    "antiguedad_rango",
+    "localidad"
+  ],
+  "campos_formulario": [
+    {
+      "nombre": "area_m2",
+      "etiqueta": "Área (m²)",
+      "tipo": "numero",
+      "minimo": 15.0,
+      "maximo": 600.0,
+      "mediana": 110.0,
+      "entero": false,
+      "opcional": false
+    },
+    {
+      "nombre": "administracion",
+      "etiqueta": "Administración mensual ($)",
+      "tipo": "numero",
+      "minimo": 30000.0,
+      "maximo": 7000000.0,
+      "mediana": 890000.0,
+      "entero": false,
+      "opcional": true
+    },
+    {
+      "nombre": "habitaciones",
+      "etiqueta": "Habitaciones",
+      "tipo": "numero",
+      "minimo": 1.0,
+      "maximo": 5.0,
+      "mediana": 3.0,
+      "entero": true,
+      "opcional": false
+    },
+    {
+      "nombre": "banos",
+      "etiqueta": "Baños",
+      "tipo": "numero",
+      "minimo": 1.0,
+      "maximo": 5.0,
+      "mediana": 3.0,
+      "entero": true,
+      "opcional": false
+    },
+    {
+      "nombre": "parqueaderos",
+      "etiqueta": "Parqueaderos",
+      "tipo": "numero",
+      "minimo": 0.0,
+      "maximo": 4.0,
+      "mediana": 2.0,
+      "entero": true,
+      "opcional": false
+    },
+    {
+      "nombre": "estrato",
+      "etiqueta": "Estrato",
+      "tipo": "numero",
+      "minimo": 1.0,
+      "maximo": 6.0,
+      "mediana": 5.0,
+      "entero": true,
+      "opcional": false
+    },
+    {
+      "nombre": "parqueadero_cubierto",
+      "etiqueta": "Parqueadero cubierto",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_deposito",
+      "etiqueta": "Depósito",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_terraza",
+      "etiqueta": "Terraza",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_estudio",
+      "etiqueta": "Estudio o biblioteca",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_cuarto_servicio",
+      "etiqueta": "Cuarto de servicio",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_tina",
+      "etiqueta": "Tina",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_piscina",
+      "etiqueta": "Piscina",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_gimnasio",
+      "etiqueta": "Gimnasio",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_bbq",
+      "etiqueta": "Zona BBQ",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "tiene_zona_infantil",
+      "etiqueta": "Zona infantil",
+      "tipo": "binaria"
+    },
+    {
+      "nombre": "antiguedad_rango",
+      "etiqueta": "Antigüedad",
+      "tipo": "categoria",
+      "opciones": [
+        "Nuevo / sobre planos",
+        "Entre 0 y 5 años",
+        "Entre 5 y 10 años",
+        "Entre 10 y 20 años",
+        "Más de 20 años",
+        "Remodelado"
+      ]
+    },
+    {
+      "nombre": "localidad",
+      "etiqueta": "Localidad",
+      "tipo": "categoria",
+      "opciones": [
+        "ANTONIO NARIÑO",
+        "BARRIOS UNIDOS",
+        "BOSA",
+        "CANDELARIA",
+        "CHAPINERO",
+        "CIUDAD BOLIVAR",
+        "ENGATIVA",
+        "FONTIBON",
+        "KENNEDY",
+        "LOS MARTIRES",
+        "PUENTE ARANDA",
+        "RAFAEL URIBE URIBE",
+        "SAN CRISTOBAL",
+        "SANTA FE",
+        "SUBA",
+        "TEUSAQUILLO",
+        "TUNJUELITO",
+        "USAQUEN",
+        "USME"
+      ]
+    }
+  ],
+  "variables_calculadas_con_la_direccion": [
+    "dist_estacion_m",
+    "dist_parque_m",
+    "dist_hospitales_clinicas_m",
+    "dist_via_principal_m",
+    "latitud",
+    "longitud",
+    "farmacias_500m",
+    "educacion_500m"
+  ],
+  "metricas_test": {
+    "MAE": 211750121.31170216,
+    "RMSE": 425111382.11386657,
+    "R2": 0.8773278805896018,
+    "MAPE": 15.976250335946288
+  },
+  "banda_80": {
+    "factor_inferior": 0.772951891785601,
+    "factor_superior": 1.2921589476024244
+  },
+  "versiones": {
+    "python": "3.13.3",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.2",
+    "numpy": "2.4.4",
+    "joblib": "1.6.0"
+  }
+}
