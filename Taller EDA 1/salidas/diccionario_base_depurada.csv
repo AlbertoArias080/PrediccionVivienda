@@ -1,0 +1,74 @@
+﻿columna,tipo,origen,valores_unicos,ejemplo
+fuente,str,Taller,2,habi.co
+id,str,Taller,10224,30555
+conjunto,str,División 80/20,2,train
+precio_venta,float64,Taller,1516,580000000.0
+log_precio_venta,float64,Calculada,1516,20.17853866150474
+precio_m2,float64,Recalculada (precio/área) — NO usar como predictor,6282,6590909.0
+area_m2,float64,Taller,2174,88.0
+habitaciones,int64,Taller,5,2
+banos,int64,Taller,5,2
+parqueaderos,int64,Taller,5,1
+estrato,int64,Taller,6,6
+administracion,float64,Taller,3527,980101.0
+administracion_imputada,int64,Bandera de imputación,2,0
+antiguedad_rango,str,Armonizada,7,Más de 20 años
+estado,str,Taller,2,Usado
+tipo_vendedor,str,Taller,4,iBuyer
+localidad,str,Taller,19,CHAPINERO
+barrio,str,Taller,1217,CHICO LAGO
+latitud,float64,Taller,8444,4.680549079000002
+longitud,float64,Taller,7665,-74.05351001297913
+tiene_jacuzzi,int64,Taller,2,0
+tiene_tina,int64,Taller,2,0
+parqueadero_cubierto,int64,Taller,2,0
+tiene_ascensor,int64,Derivada del texto del anuncio,2,1
+tiene_gimnasio,int64,Derivada del texto del anuncio,2,0
+tiene_piscina,int64,Derivada del texto del anuncio,2,0
+conjunto_cerrado,int64,Derivada del texto del anuncio,2,0
+tiene_vigilancia,int64,Derivada del texto del anuncio,2,1
+tiene_chimenea,int64,Derivada del texto del anuncio,2,0
+tiene_balcon_terraza,int64,Derivada del texto del anuncio,2,0
+tiene_deposito,int64,Derivada del texto del anuncio,2,0
+distancia_parque_mas_cercano_m,float64,Calculada (Haversine),2907,109.7
+parque_mas_cercano,str,Calculada (Haversine),1456,CHICO NORTE
+distancia_transmilenio_mas_cercana_m,float64,Calculada (Haversine),7245,599.9
+estacion_mas_cercana,str,Calculada (Haversine),143,Calle 100 - Marketmedios
+estacion,str,OSM,138,Virrey
+dist_estacion_m,float64,OSM,4651,1303.6
+parque,str,OSM,1387,CHICO NORTE
+dist_parque_m,float64,OSM,2955,337.0
+tiempo_estacion_min,float64,OSM,628,16.3
+tiempo_parque_min,float64,OSM,140,4.2
+dist_salud_m,float64,OSM,1062,157.0
+salud_200m,float64,OSM,18,1.0
+salud_500m,float64,OSM,47,14.0
+dist_hospitales_clinicas_m,float64,OSM,1551,157.0
+hospitales_clinicas_200m,float64,OSM,12,1.0
+hospitales_clinicas_500m,float64,OSM,32,4.0
+dist_farmacias_m,float64,OSM,1162,262.0
+farmacias_200m,float64,OSM,10,0.0
+farmacias_500m,float64,OSM,28,10.0
+dist_educacion_m,float64,OSM,875,403.0
+educacion_200m,float64,OSM,16,0.0
+educacion_500m,float64,OSM,36,2.0
+dist_comercio_m,float64,OSM,859,312.0
+comercio_200m,float64,OSM,17,0.0
+comercio_500m,float64,OSM,36,8.0
+dist_transporte_m,float64,OSM,771,362.0
+transporte_200m,float64,OSM,18,0.0
+transporte_500m,float64,OSM,53,16.0
+dist_recreacion_m,float64,OSM,514,164.0
+recreacion_200m,float64,OSM,20,2.0
+recreacion_500m,float64,OSM,64,8.0
+dist_religion_m,float64,OSM,1131,209.0
+religion_200m,float64,OSM,7,0.0
+religion_500m,float64,OSM,17,2.0
+dist_factores_negativos_m,float64,OSM,1642,987.0
+factores_negativos_200m,float64,OSM,8,0.0
+factores_negativos_500m,float64,OSM,22,0.0
+via_principal_cercana,str,OSM,228,Avenida Calle 94
+tipo_via_principal_cercana,str,OSM,3,secondary
+dist_via_principal_m,float64,OSM,770,34.0
+vias_principales_200m,float64,OSM,9,4.0
+vias_principales_500m,float64,OSM,15,7.0
